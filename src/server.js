@@ -22,6 +22,9 @@ const client = new MongoClient(process.env.MONGODB_URI, {
     }
 })
 
+// Middleware to parse json before data hits the handler
+server.use(express.json())
+
 
 /**
  * Connect to MongoDB database using MongoDB Native System
