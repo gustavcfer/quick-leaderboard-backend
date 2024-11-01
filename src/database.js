@@ -3,21 +3,21 @@ import chalk from 'chalk'
 import logger from './logger.js'
 import 'dotenv/config'
 
+// Instantiate MongoDB Cliente
+const client = new MongoClient(process.env.MONGODB_URI, {
+    serverApi: {
+        version: '1',
+        strict: true,
+        deprecationErrors: true,
+    }
+})
+
 let dbInstance
 
 /**
  * Connect to MongoDB database using MongoDB Native System
  */
 export async function connect() {
-    // Instantiate MongoDB Cliente
-    const client = new MongoClient(process.env.MONGODB_URI, {
-        serverApi: {
-            version: '1',
-            strict: true,
-            deprecationErrors: true,
-        }
-    })
-
     // Connect
     try {
         logger.start('Connecting to MongoDB...')
@@ -50,6 +50,10 @@ export async function connect() {
     }
 }
 
-export function getDB(){
+export async function getDB(){
     return dbInstance
+}
+
+export async function getScoresColl(){
+    return dbInstance.collection('scores')
 }
