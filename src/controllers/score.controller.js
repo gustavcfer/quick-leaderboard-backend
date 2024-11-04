@@ -50,6 +50,13 @@ async function getAllScores(req, res) {
     res.status(200).json(scores)
 }
 
+
+
+async function newScore(req, res){
+    res.status(200).json({message: 'working'})
+}
+
 export {
-    getAllScores
+    getAllScores,
+    newScore
 }
