@@ -1,4 +1,3 @@
-import logger from '../logger.js'
 import crypto from 'crypto'
 
 // Configures environment variabels
@@ -18,7 +17,6 @@ export function auth(req, res, next) {
     const token = req.headers.authorization
 
     if (!token) {
-        logger.error('Request with no TOKEN in the HEADER was rejected')
         res.status(401).json({ error: 'No token' })
         return
     }
@@ -28,7 +26,6 @@ export function auth(req, res, next) {
         .digest('hex')
 
     if (token !== hash) {
-        logger.error('Request with INVALID TOKEN was rejected')
         res.status(401).json({ error: 'Invalid token' })
         return
     }
@@ -66,7 +63,6 @@ export function putAuth(req, res, next) {
         .update(key)
         .digest('hex')
 
-    console.log(hash)
 
     if (token !== hash) {
         res.status(401).json({ error: 'Invalid token' })
