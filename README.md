@@ -21,11 +21,92 @@ This project implements a leaderboard system for games. It allows you to:
 
 ## Installation
 
-In progress...
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/gustavcfer/quick-leaderboard-backend.git
+   cd quick-leaderboard-backend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   - Rename the `.env.example` file to `.env` in the root directory.
+   - Fill in the variables needed.
+
+4. **Run the app:**
+
+   - **Development mode:** This will start the server with Nodemon for auto-reloading.
+     ```bash
+     npm run dev
+     ```
+
+   - **Production mode:** This will start the server without Nodemon.
+     ```bash
+     npm start
+     ```
 
 ## API Endpoints
 
-In progress...
+The Quick Leaderboard Backend provides two API endpoints for interacting with the leaderboard scores. All responses are returned in JSON format, and both endpoints require authentication using a Bearer token.
+
+### 1. `GET /api/v1/scores`
+
+Retrieves all scores from the leaderboard.
+
+#### Authentication
+
+- Requires Bearer token authentication.
+
+#### Query Parameters
+
+- `period` (number): Specifies the number of days to look back when retrieving scores.
+  - **Default**: `365` (1 year)
+- `limit` (number): Limits the number of scores returned.
+  - **Range**: `1` to any positive integer
+  - **Default**: `500`
+- `invert` (string): If set to `"true"`, sorts scores in ascending order; otherwise, sorts scores from highest to lowest.
+  - **Default**: Sorted from highest to lowest
+
+#### Example Request
+
+```http
+GET /api/v1/scores?period=30&limit=100&invert=true
+Authorization: Bearer <TOKEN>
+```
+
+### 2. `PUT /api/v1/scores`
+
+Creates a new score entry if it does not exist for a user, or updates the score if the new score is higher than the current one.
+
+#### Authentication
+
+- Requires Bearer token authentication.
+
+#### Request Body
+
+- `nickname` (string): The nickname of the player. (optional)
+- `key` (string): Unique player identifier. (required)
+- `score` (number): The new score to be added or compared against the existing score. (required)
+- `timestamp` (number): Timestamp with the time that the score was achieved. (optional)
+
+#### Example Request
+
+```http
+
+PUT /api/v1/scores
+Authorization: Bearer <your_token>
+Content-Type: application/json
+
+{
+  "nickname": "Player1",
+  "key": "f4903uf90ef3u290eu23f90e",
+  "score": 1600,
+  "timestamp": 1730741793
+}
+```
 
 ## Contributions
 

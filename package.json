@@ -1,12 +1,12 @@
 {
   "name": "quick-leaderboard-backend",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "A RESTful API project that implements a leaderboard backend using MongoDB for data persistence, providing endpoints to create, update, retrieve, and delete leaderboard entries efficiently.",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon --quiet .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
