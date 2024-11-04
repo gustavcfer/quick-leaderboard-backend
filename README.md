@@ -87,7 +87,7 @@ Creates a new score entry if it does not exist for a user, or updates the score 
 
 #### Request Body
 
-- `nickname` (string): The nickname of the player. (required if it's a new player)
+- `nickname` (string): The nickname of the player. (optional)
 - `key` (string): Unique player identifier. (required)
 - `score` (number): The new score to be added or compared against the existing score. (required)
 - `timestamp` (number): Timestamp with the time that the score was achieved. (optional)
@@ -101,9 +101,10 @@ Authorization: Bearer <your_token>
 Content-Type: application/json
 
 {
-  "user": "Player1",
-  "key": "f4903uf90ef3u290eu23f90e"
-  "score": 1600
+  "nickname": "Player1",
+  "key": "f4903uf90ef3u290eu23f90e",
+  "score": 1600,
+  "timestamp": 1730741793
 }
 ```
 

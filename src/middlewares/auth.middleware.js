@@ -54,7 +54,7 @@ export function putAuth(req, res, next) {
         return
     }
 
-    const { nickname, key, score, timestamp } = req.body
+    const { key, score } = req.body
 
     if (!key || !score) {
         res.status(400).json({ error: 'Body should have KEY and SCORE to be a valid request' })
@@ -65,6 +65,8 @@ export function putAuth(req, res, next) {
         .createHmac('sha256', process.env.API_SECRET)
         .update(key)
         .digest('hex')
+
+    console.log(hash)
 
     if (token !== hash) {
         res.status(401).json({ error: 'Invalid token' })

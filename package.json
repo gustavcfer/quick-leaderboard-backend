@@ -1,6 +1,6 @@
 {
   "name": "quick-leaderboard-backend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "A RESTful API project that implements a leaderboard backend using MongoDB for data persistence, providing endpoints to create, update, retrieve, and delete leaderboard entries efficiently.",
   "main": "src/server.js",
